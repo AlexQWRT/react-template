@@ -1,0 +1,16 @@
+#name: ${COMPOSE_PROJECT_NAME:? Can't find ".env" file}
+
+services:
+  node:
+    build:
+      context: ./node
+      dockerfile: ./Dockerfile
+    container_name: ${COMPOSE_PROJECT_NAME}_node
+    user: node
+    networks:
+      - net
+    working_dir: /app
+
+networks:
+  net:
+    name: ${COMPOSE_PROJECT_NAME}_net
